@@ -1,66 +1,48 @@
-function seleccionarCafe() {
-    alert("Bievenido a BlueBird Café!")
-    
-    while (true) {
-        let tipoDeCafe = prompt("Por favor, seleccione numericamente, el tipo de café que desee ordenar: \n1. Capuccino \n2. Macchiato \n3. Expreso \n4. Americano \n0. Para salir")
-        let costoInicial = 0;
 
-        switch (tipoDeCafe.toUpperCase()) {
-            case "1":
-                costoInicial += 1200;
-                alert("Usted ha seleccionado Capuccino")
-                break;
-            case "2":
-                costoInicial += 1750;
-                alert("Usted ha seleccionado Macchiato")
-                break;
-            case "3":
-                costoInicial += 2200;
-                alert("Usted ha seleccionado Expreso")
-                break;
-            case "4":
-                costoInicial += 2600;
-                alert("Usted ha seleccionado Americano")
-                continue;
-            case "0":
-                alert("Usted está saliendo...");
-                 break;
-            default:
-                alert("Tipo de caracter no válido, seleccione numéricamente por favor!")
-                
-        }   
-    
-        let tipoDeComida = prompt("Por favor, seleccione numéricamente lo que desee pedir para comer: \n1. Dos Facturas \n2. Tres Carlitos \n3. Dos Tortitas \n4. Cuatro Sopaipilla \n0. Para salir")
-        let costoDeComida = 0;
 
-        switch (tipoDeComida.toUpperCase()) {
-            case "1":
-                costoDeComida += 900;
-                alert("Usted ha seleccionado Dos Facturas")
-                break;
-            case "2":
-                costoDeComida += 1400;
-                alert("Usted ha seleccionado Tres Carlitos")
-                break;
-            case "3":
-                costoDeComida += 600;
-                alert("Usted ha seleccionado Dos Tortitas")
-                break;
-            case "4":
-                costoDeComida += 1500;
-                alert("Usted ha seleccionado Cuatro Sopaipillas")
-            case "0":
-                alert("Usted está saliendo...");
-                break;
-            default:
-                alert("Tipo de caracter no válido, seleccione numéricamente por favor!")
-                break;
+let cafe = 0;
+let precioAbsoluto = 0;
+const preciosItems = {
+    1: 3600,
+    2: 4300, 
+    3: 5200, 
+    4: 5400
+};
+
+if (true) {
+    alert("Te damos la bienvenida a BlueBird Café, nuestro local de café de Mendoza!")
+};
+
+let seguirComprando = true;
+while (seguirComprando) {
+
+    let nuevoCafe = prompt("Por favor, seleccione lo que desee ordenar: \n1. Capuccino c/Facturas - $3600 \n2. Macchiato c/sandwich tostado - $4300\n3. Expreso doble c/facturas rellenas - $5200\n4. Americano c/tostados y facturas - $5400")
+
+    cafe = nuevoCafe
+    if (cafe <= 0 || cafe > 4 || isNaN(cafe)) {
+        alert("Por favor, seleccione un número de artículo válido.");
+    } else {
+        if (cafe == 1) {
+            precioAbsoluto += preciosItems[1];
+            alert(`Agregamos una orden de Capuccino c/Facturas. Precio: $${preciosItems[1]}. Precio a pagar: $${precioAbsoluto}.`);
+
+        } else if (cafe == 2) {
+            precioAbsoluto += preciosItems[2];
+            alert(`Agregamos una orden de Macchiato c/Sandwich tostado. Precio: $${preciosItems[2]}. Precio a pagar: $${precioAbsoluto}.`);
+
+        } else if (cafe == 3) {
+            precioAbsoluto += preciosItems[3];
+            alert(`Agregamos una orden de Expreso doble c/Facturas rellena. Precio: $${preciosItems[3]}. Precio a pagar: $${precioAbsoluto}.`);
+
+        } else if (cafe == 4) {
+            precioAbsoluto += preciosItems[4];
+             alert(`Agregamos una orden de Americano c/Tostados y Tacturas. Precio: $${preciosItems[4]}. Precio a pagar: $${precioAbsoluto}.`);
+        }
+        let respuesta = prompt("Por favor, ¿Desea seguir agregar otro pedido?(Si/No)").toLowerCase();
+        if (respuesta == "no") {
+            seguirComprando = false;
+            break;
+        }
     }
-  }
-}
-   
-seleccionarCafe()
-
-
-    
-
+};
+alert(`El total de su orden es: $${precioAbsoluto}. Gracias por comprar en BlueBird Café, buen provecho!.`);
